@@ -8,7 +8,7 @@ namespace TigerTix.Web.Controllers
     {
 		public IActionResult Index()
 		{
-			return View("TicketHomePage");
+			return View("LoginScreen");
 		}
 
 		[HttpPost]
