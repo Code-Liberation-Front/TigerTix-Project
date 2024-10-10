@@ -14,7 +14,16 @@ namespace TigerTix.Web.Controllers
 		[HttpPost]
         public IActionResult Index(LoginViewModel model)
         {
-			return View("TicketHomePage");
+            if (model.Username == "testing" && model.Password == "Beans123") {
+                return RedirectToAction("TicketView");
+            }
+            return View("LoginScreen");
+        }
+
+        [HttpGet("/dashboard")]
+        public IActionResult TicketView()
+        {
+            return View("TicketHomePage");
         }
     }
 }
