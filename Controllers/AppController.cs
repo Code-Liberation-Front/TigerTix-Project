@@ -8,13 +8,13 @@ namespace TigerTix.Web.Controllers
     {
 		public IActionResult Index()
 		{
-			return View();
+			return View("TicketHomePage");
 		}
 
 		[HttpPost]
         public IActionResult Index(LoginViewModel model)
         {
-			return View();
+			return View("TicketHomePage");
         }
     }
 }
