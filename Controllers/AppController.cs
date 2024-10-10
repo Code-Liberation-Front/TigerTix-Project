@@ -11,8 +11,8 @@ namespace TigerTix.Web.Controllers
 			return View();
 		}
 
-		[HttpPost("/App")]
-        public IActionResult Index(IndexViewModel model)
+		[HttpPost]
+        public IActionResult Index(LoginViewModel model)
         {
 			return View();
         }
