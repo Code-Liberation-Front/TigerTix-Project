@@ -15,7 +15,7 @@ namespace TigerTix.Web.Controllers
         public IActionResult LoginView(LoginViewModel model)
         {
             if (model.Authentication()) {
-                return RedirectToAction("TicketView");
+                return RedirectToAction("Index");
             }
             return RedirectToAction("LoginView");
         }
