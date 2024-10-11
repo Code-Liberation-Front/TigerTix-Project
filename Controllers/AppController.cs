@@ -8,22 +8,22 @@ namespace TigerTix.Web.Controllers
     {
 		public IActionResult Index()
 		{
-			return View("LoginScreen");
+			return View("TicketHomePage");
 		}
 
-		[HttpPost]
-        public IActionResult Index(LoginViewModel model)
+		[HttpPost("/login")]
+        public IActionResult LoginView(LoginViewModel model)
         {
-            if (model.Username == "testing" && model.Password == "Beans123") {
-                return RedirectToAction("TicketView");
+            if (model.Authentication()) {
+                return RedirectToAction("Index");
             }
-            return View("LoginScreen");
+            return RedirectToAction("LoginView");
         }
 
-        [HttpGet("/dashboard")]
-        public IActionResult TicketView()
+        [HttpGet("/login")]
+        public IActionResult LoginView()
         {
-            return View("TicketHomePage");
+            return View("LoginScreen");
         }
     }
 }
