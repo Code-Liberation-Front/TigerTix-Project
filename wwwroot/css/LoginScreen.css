@@ -1,0 +1,29 @@
+/* Main Box */
+form {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 300px;
+    background-color: #ffffff;
+}
+/* User and pass text */
+label {
+    display: block;
+    color: black;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+/* Input box surrounding */
+input {
+    width: 95%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: justify;
+}
+button {
+    padding: 10px 20px;
+    background-color: #F56600;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

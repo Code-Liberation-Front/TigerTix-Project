@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TigerTix: @ViewData["Title"]</title>
+        <link rel="stylesheet" href="~/css/Layout.css"/>
+        @RenderSection("Styles", false)
+    </head>
+    
+    <body>
+    	<header>
+            <a href="#default" class="logo">
+                <img src="TigerTix.png" alt="Event Image" width="80" height="40">
+            </a>
+            <div class="header-right">
+              <a class="active" href="./">Buy Tickets</a>
+              <a href="./contact">Contact</a>
+              <a href="./login">Account</a>
+            </div>
+      	</header>
+        <div class="container">
+            <main>
+                @RenderBody()
+            </main>
+        </div>
+    </body>
+</html>

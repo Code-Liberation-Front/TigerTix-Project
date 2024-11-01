@@ -1,115 +1,21 @@
 ﻿@model LoginViewModel
-@{
-	ViewData["Title"] = "Home Page";
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/LoginScreen.css"/>
 }
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TigerTix: @ViewData["Title"]</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-                background-color: #f0f0f0;
-            }
-            /* Main Box */
-            form {
-                margin: 20px auto;
-                padding: 20px;
-                border: 1px solid #ccc;
-                width: 300px;
-                background-color: #ffffff;
-            }
-            /* User and pass text */
-            label {
-                display: block;
-                color: black;
-                margin-bottom: 10px;
-                text-align: justify;
-            }
-            /* Input box surrounding */
-            input {
-                width: 95%;
-                padding: 5px;
-                border: 1px solid #ccc;
-                text-align: justify;
-            }
-            button {
-                padding: 10px 20px;
-                background-color: #F56600;
-                color: white;
-                border: none;
-                cursor: pointer;
-            }
+@{
+	ViewData["Title"] = "Home Page";
+    Layout = "~/Views/_Layout.cshtml";
+}
 
-            /* Login header */
-            .header {
-            overflow: hidden;
-            background-color: #f1f1f1;
-            padding: 5px 5px;
-            }
-
-            /* Right 3 buttons */
-            .header a {
-            float: left;
-            color: black;
-            text-align: center;
-            padding: 6px;
-            text-decoration: none;
-            font-size: 15px;
-            line-height: 25px;
-            border-radius: 4px;
-            }
-
-            /* Left page header background */
-            .header a.logo {
-            font-size: 30px;
-            font-weight: bold;
-                padding: 1px;
-            }
-
-            /* Change the background color on mouse-over */
-            .header a:hover {
-            background-color: #ddd;
-            color: black;
-            }
-
-            /* Buy Tickets Button */
-            .header a.active {
-            background-color: #522D80;
-            color: white;
-            }
-
-            /* Float the link section to the right */
-            .header-right {
-            float: right;
-            }
-        </style>
-    </head>
-    
-    <body>
-    	<div class="header">
-            <a href="#default" class="logo">
-                <img src="TigerTix.png" alt="Event Image" width="80" height="40">
-            </a>
-          <div class="header-right">
-              <a class="active" href="./">Buy Tickets</a>
-              <a href="./contact">Contact</a>
-              <a href="./login">Account</a>
-          </div>
-      	</div>
-        <form method="post">
-            <h2>Login</h2>
-            <label>Username:</label>
-            <input type="text" name="username"/>
-            <br /><br />
-            <label>Password:</label>
-            <input type="password" name="password"/>
-            <br /><br />
-            <button>Login</button>
-        </form>
-    </body>
-</html>
+<form method="post">
+    <h2>Login</h2>
+    <label>Username:</label>
+    <input type="text" name="username"/>
+    <br /><br />
+    <label>Password:</label>
+    <input type="password" name="password"/>
+    <br /><br />
+    <button>Login</button>
+</form>
