@@ -361,8 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-.idea/.idea.TigerTix.Web/.idea/vcs.xml
-.idea/.idea.TigerTix.Web/.idea/indexLayout.xml
-.idea/.idea.TigerTix.Web/.idea/encodings.xml
-.idea/.idea.TigerTix.Web/.idea/.name
+.idea
 .DS_Store
+
+Migrations
+TigerTix.db
