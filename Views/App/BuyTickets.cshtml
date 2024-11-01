@@ -1,18 +1,16 @@
-@model LoginViewModel
-
 @section Styles{
     <link rel="stylesheet" href="~/css/TicketHomePage.css"/>
 }
 
 @{
     ViewData["Title"] = "Ticket Listings";
-    Layout = "~/Views/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h3>Clemson Tigers Football</h3>
 <div class="ticket-list">
   <div class="ticket-item">
-      <img src="logo.jpeg" alt="Event Image">
+      <img src="~/logo.jpeg" alt="Event Image">
       <h2>Clemson At Wakeforest</h2>
       <p>Date: October 12, 2024</p>
       <p>Location: Winston-Salem, NC</p>
@@ -21,7 +19,7 @@
   </div>
 <div class="ticket-list">
     <div class="ticket-item">
-        <img src="logo.jpeg" alt="Event Image">
+        <img src="~/logo.jpeg" alt="Event Image">
         <h2>Clemson Vs Virginia</h2>
         <p>Date: October 19, 2024</p>
         <p>Location: Death Valley</p>

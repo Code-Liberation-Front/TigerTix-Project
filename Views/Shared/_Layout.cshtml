@@ -11,12 +11,12 @@
     <body>
     	<header>
             <a href="#default" class="logo">
-                <img src="TigerTix.png" alt="Event Image" width="80" height="40">
+                <img src="~/TigerTix.png" alt="Event Image" width="80" height="40">
             </a>
             <div class="header-right">
-              <a class="active" href="./">Buy Tickets</a>
-              <a href="./contact">Contact</a>
-              <a href="./login">Account</a>
+                @Html.ActionLink("Buy Tickets", "BuyTickets", "App", null, new { @class = "active" })
+                <a href="./contact">Contact</a>
+                @Html.ActionLink("Account", "Login", "App", null)
             </div>
       	</header>
         <div class="container">
