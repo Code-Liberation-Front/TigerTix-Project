@@ -10,23 +10,40 @@ namespace TigerTix.Web.Controllers
 		{
 			return View();
 		}
-
-		[HttpPost]
-        public IActionResult Login(LoginViewModel model)
-        {
-            if (model.Username == "testing" && model.Password == "Beans123") {
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
         
         public IActionResult Login()
         {
             return View();
         }
+        
+		[HttpPost]
+        public IActionResult Login(LoginModel model)
+        {
+            if (model.Username == "testing" && model.UserPassword == "Beans123") {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
 
         public IActionResult BuyTickets()
         {
+            return View();
+        }
+
+        public IActionResult CreateUser()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult CreateUser(LoginModel model)
+        {
+            model.UserJoinDate = DateTime.UtcNow.Date.ToString("yyyy-MM-dd");
+            using (var db = new DbModel())
+            {
+                db.Add(model);
+                db.SaveChanges();
+            }
             return View();
         }
     }

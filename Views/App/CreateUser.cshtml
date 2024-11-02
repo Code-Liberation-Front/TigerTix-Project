@@ -1,0 +1,30 @@
+@model LoginModel
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/css/LoginScreen.css"/>
+}
+
+@{
+    ViewData["Title"] = "Login Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <h2>Create User</h2>
+    <label>Username:</label>
+    <input type="text" name="Username"/>
+    <br /><br />
+    <label>Password:</label>
+    <input type="password" name="UserPassword"/>
+    <br /><br />
+    <label>Email:</label>
+    <input type="email" name="UserEmail"/>
+    <br /><br />
+    <label>CUID:</label>
+    <input type="text" name="UserCUID"/>
+    <br /><br />
+    <label>Date of Birth:</label>
+    <input type="date" name="UserDOB"/>
+    <br /><br />
+    <button>Create</button>
+</form>

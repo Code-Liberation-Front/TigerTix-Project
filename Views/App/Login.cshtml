@@ -1,7 +1,7 @@
-﻿@model LoginViewModel
+﻿@model LoginModel
 
 @section Styles{
-    <link rel="stylesheet" href="~/css/LoginScreen.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/LoginScreen.css"/>
 }
 
 @{
@@ -18,4 +18,7 @@
     <input type="password" name="password"/>
     <br /><br />
     <button>Login</button>
+    <br/>
+    <div class="create"></div>
+    @Html.ActionLink("Create User", "CreateUser", "App", null, new { @class = "create" })
 </form>
