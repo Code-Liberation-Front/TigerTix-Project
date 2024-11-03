@@ -1,0 +1,25 @@
+@section Styles{
+    <link rel="stylesheet" href="~/css/TicketHomePage.css"/>
+}
+
+@{
+    ViewData["Title"] = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cart</h1>
+<div class="ticket-list">
+    <div class="ticket-item">
+        <img src="~/logo.jpeg" alt="Event Image">
+        <h2>Clemson At Wakeforest</h2>
+        <p>Date: October 12, 2024</p>
+        <p>Location: Winston-Salem, NC</p>
+        <p>Quantity: 1</p>
+    </div>
+</div>
+
+<div class="ticket-list">
+    <div class="ticket-item">
+        <button>Checkout</button>
+    </div>
+</div>

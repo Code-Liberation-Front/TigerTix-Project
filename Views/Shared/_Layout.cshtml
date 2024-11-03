@@ -10,13 +10,17 @@
     
     <body>
     	<header>
-            <a href="#default" class="logo">
+            <a href="/App/BuyTickets" class="logo">
                 <img src="~/TigerTix.png" alt="Event Image" width="80" height="40">
             </a>
             <div class="header-right">
                 @Html.ActionLink("Buy Tickets", "BuyTickets", "App", null, new { @class = "active" })
                 @Html.ActionLink("Contact", "Contact", "App", null)
                 @Html.ActionLink("Account", "Login", "App", null)
+                
+                <a href="/App/Cart" class="logo">
+                    <img src="~/cart.jpg" alt="Event Image" width="40" height="40">
+                </a>
             </div>
       	</header>
         <div class="container">
