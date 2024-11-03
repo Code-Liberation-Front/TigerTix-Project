@@ -45,6 +45,11 @@ namespace TigerTix.Web.Controllers
         {
             return View();
         }
+        // Returns the Checkout view
+        public IActionResult Checkout()
+        {
+            return View();
+        }
         // Handles User creation by taking input from user and adding to the db
         [HttpPost]
         public IActionResult CreateUser(LoginModel model)
