@@ -1,0 +1,31 @@
+@section Styles{
+    <link rel="stylesheet" href="~/css/Contact.css"/>
+}
+
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <h2>Contact Form</h2>
+    
+    <label>Full Name</label>
+    <input type="text" placeholder="Enter Name"/>
+    <br /><br />
+
+    <label>Email</label>
+    <input type="text" placeholder="Enter Email"/>
+    <br /><br />
+
+    <label>Subject</label>
+    <input type="text" placeholder="Enter Subject"/>
+    <br /><br />
+
+    <label>Message</label>
+    <textarea type="text" placeholder="Enter Message"></textarea>
+    <br /><br />
+    
+    <button>Submit</button>
+    <br/>
+</form>

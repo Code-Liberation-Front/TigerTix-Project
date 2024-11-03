@@ -11,14 +11,21 @@
 
 <form method="post">
     <h2>Login</h2>
+    
     <label>Username:</label>
     <input type="text" name="username"/>
     <br /><br />
+    
     <label>Password:</label>
     <input type="password" name="password"/>
     <br /><br />
+    
     <button>Login</button>
-    <br/>
-    <div class="create"></div>
-    @Html.ActionLink("Create User", "CreateUser", "App", null, new { @class = "create" })
+    <br /><br />
+    
+    <midlabel>Don't have an account?</midlabel>
+    <br />
+
+    <button type="button" onclick="window.location.href='CreateUser'">Create User</button>
+    
 </form>
