@@ -33,7 +33,7 @@ namespace TigerTix.Web.Controllers
         // Returns the CreateUser view
         public IActionResult CreateUser()
         {
-            return View("CreateUser");
+            return View();
         }
         // Returns the Contact view
         public IActionResult Contact()
@@ -54,13 +54,21 @@ namespace TigerTix.Web.Controllers
         [HttpPost]
         public IActionResult CreateUser(LoginModel model)
         {
-            model.UserJoinDate = DateTime.UtcNow.Date.ToString("yyyy-MM-dd");
+            model.UserJoinDate = DateTime.UtcNow.Date;
+            if (!ModelState.IsValid) return View(model);
             using (var db = new DbModel())
             {
                 db.Add(model);
                 db.SaveChanges();
             }
-            return View();
+
+            return RedirectToAction("Login");
+        }
+
+        public IActionResult Users()
+        {
+            DbModel db = new DbModel();
+            return View(db.Users.ToList());
         }
     }
 }

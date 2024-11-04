@@ -8,23 +8,29 @@ namespace TigerTix.Web.Models
 	{
 		// Set user id in the db
 		[Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int UserId { get; set; }
-		[Required]
+		public int UserID { get; set; }
+		
+		[Required(ErrorMessage = "Username is required")]
 		// Set the username
 		public string Username { get; set; }
-		[Required]
+		
+		[Required(ErrorMessage = "Password is required")]
 		// Set the password
 		public string UserPassword { get; set; }
-		[Required]
+		
+		[Required(ErrorMessage = "Email is required")]
+		[RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "Please enter a valid email address.")]
 		// Set the email
 		public string UserEmail { get; set; }
-		[Required]
+		
+		[Required(ErrorMessage = "CUID is required")]
 		// Set the cuid
 		public string UserCUID { get ; set; }
-		[Required]
+		
+		[Required(ErrorMessage = "Date of Birth is Required")]
 		// Set the dob
-		public string UserDOB { get; set; }
+		public DateTime UserDOB { get; set; }
 		// Set the join date
-		public string UserJoinDate{ get; set; }
+		public DateTime UserJoinDate{ get; set; }
 	}
 }

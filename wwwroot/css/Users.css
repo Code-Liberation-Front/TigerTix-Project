@@ -1,0 +1,16 @@
+.user-table, .user-row, .user-column {
+    border: 1px solid #ccc;
+}
+
+.user-column {
+    padding: 20px;
+}
+
+.user-table {
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: top;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    width: 100%;
+}

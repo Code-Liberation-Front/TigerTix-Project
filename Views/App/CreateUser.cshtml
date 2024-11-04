@@ -12,19 +12,24 @@
 <form method="post">
     <h2>Create User</h2>
     <label>Username:</label>
-    <input type="text" name="Username"/>
+    @Html.EditorFor(model => model.Username)
+    @Html.ValidationMessageFor(model => model.Username, "", new {@class = "text-danger"})
     <br /><br />
     <label>Password:</label>
-    <input type="password" name="UserPassword"/>
+    @Html.EditorFor(model => model.UserPassword, new {htmlAttributes = new {type = "password"}})
+    @Html.ValidationMessageFor(model => model.UserPassword, "", new {@class = "text-danger"})
     <br /><br />
     <label>Email:</label>
-    <input type="email" name="UserEmail"/>
+    @Html.EditorFor(model => model.UserEmail)
+    @Html.ValidationMessageFor(model => model.UserEmail, "", new {@class = "text-danger"})
     <br /><br />
     <label>CUID:</label>
-    <input type="text" name="UserCUID"/>
+    @Html.EditorFor(model => model.UserCUID)
+    @Html.ValidationMessageFor(model => model.UserCUID, "", new {@class = "text-danger"})
     <br /><br />
     <label>Date of Birth:</label>
-    <input type="date" name="UserDOB"/>
+    @Html.EditorFor(model => model.UserDOB, new {htmlAttributes = new {type = "date"}})
+    @Html.ValidationMessageFor(model => model.UserDOB, "", new {@class = "text-danger"})
     <br /><br />
     <button>Create</button>
 </form>
