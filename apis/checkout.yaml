@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: TigerTix API
+  version: 1.0.0
+servers:
+  - url: https://api.tigertix.com
+paths:
+  /cart:
+    post:
+      summary: Add an item to the cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: integer
+                quantity:
+                  type: integer
+      responses:
+        '201':
+          description: Item added to cart
+        '400':
+          description: Bad Request
+    get:
+      summary: Get cart items
+      responses:
+        '200':
+          description: Cart items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    productId:
+                      type: integer
+                    quantity:
+                      type: integer
+                    price:
+                      type: number
+    delete:
+      summary: Clear the cart
+      responses:
+        '204':
+          description: Cart cleared
+  /cart/{productId}:
+    delete:
+      summary: Remove an item from the cart
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Item removed
+        '404':
+          description: Item not found
+  /checkout:
+    post:
+      summary: Checkout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                # Payment information, shipping address, etc.
+      responses:
+        '200':
+          description: Checkout successful
+        '400':
+          description: Bad Request
+        '402':
+          description: Payment failed

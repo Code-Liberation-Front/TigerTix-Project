@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  title: TigerTix API
+  version: 1.0.0
+servers:
+  - url: https://api.tigertix.com
+paths:
+  /notifications:
+    post:
+      summary: Send a notification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                to:
+                  type: string
+                  description: Recipient's email or phone number
+                message:
+                  type: string
+                  description: Notification message
+                channel:
+                  type: string
+                  enum: [email, sms]
+                  description: Notification channel
+      responses:
+        '201':
+          description: Notification sent successfully
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error

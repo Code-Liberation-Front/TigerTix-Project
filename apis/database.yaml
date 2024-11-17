@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: TigerTix API
+  version: 1.0.0
+servers:
+  - url: https://api.tigertix.com
+paths:
+  /data:
+    get:
+      summary: Retrieves data from the database
+      description: Fetches data based on query parameters
+      parameters:
+        - in: query
+          name: query
+          schema:
+            type: string
+          description: The SQL query to execute
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The maximum number of records to return
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          description: The offset for pagination
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    post:
+      summary: Inserts data into the database
+      description: Inserts a new record into the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                # Define the schema for the data to be inserted
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+  /data/{id}:
+    get:
+      summary: Retrieves a specific data item
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the data item
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    put:
+      summary: Updates a specific data item
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the data item
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                # Define the schema for the updated data
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    delete:
+      summary: Deletes a specific data item
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the data item
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error

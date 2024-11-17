@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: TigerTix API
+  version: 1.0.0
+servers:
+  - url: https://api.tigertix.com
+paths:
+  /tickets/{ticketCode}:
+    get:
+      summary: Verify a ticket
+      parameters:
+        - in: path
+          name: ticketCode
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ticket is valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isValid:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Invalid ticket code
+        '401':
+          description: Unauthorized access
+        '403':
+          description: Forbidden access
+        '500':
+          description: Internal server error

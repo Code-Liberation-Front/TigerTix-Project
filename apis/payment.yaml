@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: TigerTix API
+  version: 1.0.0
+servers:
+  - url: https://api.tigertix.com
+paths:
+  /payments:
+    post:
+      summary: Create a payment intent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                currency:
+                  type: string
+                # Other payment details like customer information, billing address, etc.
+      responses:
+        '201':
+          description: Payment intent created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  paymentIntentId:
+                    type: string
+        '400':
+          description: Bad Request
+  /payments/{paymentIntentId}:
+    get:
+      summary: Retrieve payment intent
+      parameters:
+        - in: path
+          name: paymentIntentId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payment intent retrieved
+        '404':
+          description: Payment intent not found
+    post:
+      summary: Confirm payment intent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                # Payment confirmation details like payment method token
+      responses:
+        '200':
+          description: Payment confirmed
+        '400':
+          description: Bad Request
+        '402':
+          description: Payment failed
+    delete:
+      summary: Cancel payment intent
+      responses:
+        '204':
+          description: Payment intent canceled
