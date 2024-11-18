@@ -12,26 +12,16 @@
 
 <h1>Clemson Tigers Football</h1>
 <div class="ticket-list">
-  <div class="ticket-item">
+    <div class="ticket-item">
       <img src="~/logo.jpeg" alt="Event Image">
       <h2>Clemson At Wakeforest</h2>
       <p>Date: Saturday, October 12, 2024</p>
       <p>Location: Winston-Salem, NC</p>
       <button>Buy Tickets</button>
-  </div>
-  </div>
-<div class="ticket-list">
-    <div class="ticket-item">
-        <img src="~/logo.jpeg" alt="Event Image">
-        <h2>Clemson Vs Virginia</h2>
-        <p>Date: Saturday, October 19, 2024</p>
-        <p>Location: Death Valley</p>
-        <button>Buy Tickets</button>
     </div>
-    </div>
+
 @foreach (var ticket in Model)
 {
-<div class="ticket-list">
     <div class="ticket-item">
         <img src="@ticket.TicketPath" alt="Event Image">
         <h2>@ticket.TicketTitle</h2>
@@ -39,5 +29,5 @@
         <p>Location: @ticket.TicketLocation</p>
         <button>Buy Tickets</button>
     </div>
-</div>
 }
+</div>
