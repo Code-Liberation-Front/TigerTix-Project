@@ -180,6 +180,12 @@ paths:
           description: Payment intent not found
     post:
       summary: Confirm payment intent
+      parameters:
+        - in: path
+          name: paymentIntentId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -194,6 +200,12 @@ paths:
           description: Payment failed
     delete:
       summary: Cancel payment intent
+      parameters:
+        - in: path
+          name: paymentIntentId
+          required: true
+          schema:
+            type: string
       responses:
         '204':
           description: Payment intent canceled
