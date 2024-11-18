@@ -1,0 +1,321 @@
+openapi: 3.0.0
+info:
+  title: TigerTix API
+  version: 1.0.0
+servers:
+  - url: https://api.tigertix.com
+paths:
+  /login:
+    post:
+      summary: Login
+      description: Authenticates a user and returns an access token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful authentication
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+
+        '401':
+          description: Unauthorized
+  /data:
+    get:
+      summary: Retrieves data from the database
+      description: Fetches data based on query parameters
+      parameters:
+        - in: query
+          name: query
+          schema:
+            type: string
+          description: The SQL query to execute
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The maximum number of records to return
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          description: The offset for pagination
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    post:
+      summary: Inserts data into the database
+      description: Inserts a new record into the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+  /data/{id}:
+    get:
+      summary: Retrieves a specific data item
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the data item
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    put:
+      summary: Updates a specific data item
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the data item
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    delete:
+      summary: Deletes a specific data item
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the data item
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+  /payments:
+    post:
+      summary: Create a payment intent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                currency:
+                  type: string
+                # Other payment details like customer information, billing address, etc.
+      responses:
+        '201':
+          description: Payment intent created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  paymentIntentId:
+                    type: string
+        '400':
+          description: Bad Request
+  /payments/{paymentIntentId}:
+    get:
+      summary: Retrieve payment intent
+      parameters:
+        - in: path
+          name: paymentIntentId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payment intent retrieved
+        '404':
+          description: Payment intent not found
+    post:
+      summary: Confirm payment intent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Payment confirmed
+        '400':
+          description: Bad Request
+        '402':
+          description: Payment failed
+    delete:
+      summary: Cancel payment intent
+      responses:
+        '204':
+          description: Payment intent canceled
+  /tickets/{ticketCode}:
+    get:
+      summary: Verify a ticket
+      parameters:
+        - in: path
+          name: ticketCode
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ticket is valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isValid:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Invalid ticket code
+        '401':
+          description: Unauthorized access
+        '403':
+          description: Forbidden access
+        '500':
+          description: Internal server error
+  /notifications:
+    post:
+      summary: Send a notification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                to:
+                  type: string
+                  description: Recipient's email or phone number
+                message:
+                  type: string
+                  description: Notification message
+                channel:
+                  type: string
+                  enum: [email, sms]
+                  description: Notification channel
+      responses:
+        '201':
+          description: Notification sent successfully
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+  /verify:
+    post:
+      summary: Verify a student ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                studentId:
+                  type: string
+                # Other relevant fields like name, institution, etc.
+      responses:
+        '200':
+          description: Verification successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isValid:
+                    type: boolean
+                  message:
+                    type: string
+                  # Additional details like student name, institution, etc.
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
+  /price:
+    post:
+      summary: Calculate price
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: string
+                quantity:
+                  type: integer
+                discountCode:
+                  type: string
+                  nullable: true
+      responses:
+        '200':
+          description: Price calculated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  price:
+                    type: number
+                  discountAmount:
+                    type: number
+                  finalPrice:
+                    type: number
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
