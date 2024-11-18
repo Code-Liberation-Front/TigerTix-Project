@@ -1,3 +1,6 @@
+@using System.Globalization
+@model IEnumerable<TigerTix.Web.Models.TicketModel>
+
 @section Styles{
     <link rel="stylesheet" href="~/css/TicketHomePage.css"/>
 }
@@ -12,7 +15,7 @@
   <div class="ticket-item">
       <img src="~/logo.jpeg" alt="Event Image">
       <h2>Clemson At Wakeforest</h2>
-      <p>Date: October 12, 2024</p>
+      <p>Date: Saturday, October 12, 2024</p>
       <p>Location: Winston-Salem, NC</p>
       <button>Buy Tickets</button>
   </div>
@@ -21,8 +24,20 @@
     <div class="ticket-item">
         <img src="~/logo.jpeg" alt="Event Image">
         <h2>Clemson Vs Virginia</h2>
-        <p>Date: October 19, 2024</p>
+        <p>Date: Saturday, October 19, 2024</p>
         <p>Location: Death Valley</p>
         <button>Buy Tickets</button>
     </div>
     </div>
+@foreach (var ticket in Model)
+{
+<div class="ticket-list">
+    <div class="ticket-item">
+        <img src="@ticket.TicketPath" alt="Event Image">
+        <h2>@ticket.TicketTitle</h2>
+        <p>Date: @(DateTime.ParseExact(ticket.TicketDate, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("D", new CultureInfo("en-US")))</p>
+        <p>Location: @ticket.TicketLocation</p>
+        <button>Buy Tickets</button>
+    </div>
+</div>
+}

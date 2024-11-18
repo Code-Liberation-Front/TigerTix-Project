@@ -28,7 +28,8 @@ namespace TigerTix.Web.Controllers
         // Returns the BuyTickets view
         public IActionResult BuyTickets()
         {
-            return View();
+            DbModel db = new DbModel();
+            return View(db.Tickets.ToList());
         }
         // Returns the CreateUser view
         public IActionResult CreateUser()
@@ -61,7 +62,6 @@ namespace TigerTix.Web.Controllers
                 db.Add(model);
                 db.SaveChanges();
             }
-
             return RedirectToAction("Login");
         }
 

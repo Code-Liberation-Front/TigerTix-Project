@@ -13,23 +13,23 @@
     <h2>Create User</h2>
     <label>Username:</label>
     @Html.EditorFor(model => model.Username)
-    @Html.ValidationMessageFor(model => model.Username, "", new {@class = "text-danger"})
+    @Html.ValidationMessageFor(model => model.Username, "", new {@class = "text-danger create"})
     <br /><br />
     <label>Password:</label>
     @Html.EditorFor(model => model.UserPassword, new {htmlAttributes = new {type = "password"}})
-    @Html.ValidationMessageFor(model => model.UserPassword, "", new {@class = "text-danger"})
+    @Html.ValidationMessageFor(model => model.UserPassword, "", new {@class = "text-danger create"})
     <br /><br />
     <label>Email:</label>
     @Html.EditorFor(model => model.UserEmail)
-    @Html.ValidationMessageFor(model => model.UserEmail, "", new {@class = "text-danger"})
+    @Html.ValidationMessageFor(model => model.UserEmail, "", new {@class = "text-danger create"})
     <br /><br />
     <label>CUID:</label>
     @Html.EditorFor(model => model.UserCUID)
-    @Html.ValidationMessageFor(model => model.UserCUID, "", new {@class = "text-danger"})
+    @Html.ValidationMessageFor(model => model.UserCUID, "", new {@class = "text-danger create"})
     <br /><br />
     <label>Date of Birth:</label>
     @Html.EditorFor(model => model.UserDOB, new {htmlAttributes = new {type = "date"}})
-    @Html.ValidationMessageFor(model => model.UserDOB, "", new {@class = "text-danger"})
+    @Html.ValidationMessageFor(model => model.UserDOB, "", new {@class = "text-danger create"})
     <br /><br />
     <button>Create</button>
 </form>

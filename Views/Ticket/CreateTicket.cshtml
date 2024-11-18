@@ -1,0 +1,31 @@
+@model TicketViewModel
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/css/LoginScreen.css"/>
+}
+
+@{
+    ViewData["Title"] = "Login Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <h2>Create Ticket</h2>
+    <label>Title:</label>
+    @Html.EditorFor(model => model.TicketTitle)
+    @Html.ValidationMessageFor(model => model.TicketTitle, "", new {@class = "text-danger create"})
+    <br /><br />
+    <label>Date of Event:</label>
+    @Html.EditorFor(model => model.TicketDate, new {htmlAttributes = new {type = "date"}})
+    @Html.ValidationMessageFor(model => model.TicketDate, "", new {@class = "text-danger create"})
+    <br /><br />
+    <label>Location:</label>
+    @Html.EditorFor(model => model.TicketLocation)
+    @Html.ValidationMessageFor(model => model.TicketLocation, "", new {@class = "text-danger create"})
+    <br /><br />
+    <label>Ticket Image:</label>
+    @Html.EditorFor(model => model.TicketImage, new {htmlAttributes = new {type = "file"}})
+    @Html.ValidationMessageFor(model => model.TicketImage, "", new {@class = "text-danger create"})
+    <br /><br />
+    <button>Create</button>
+</form>

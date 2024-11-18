@@ -366,3 +366,5 @@ FodyWeavers.xsd
 
 Migrations
 TigerTix.db*
+
+wwwroot/upload/*
