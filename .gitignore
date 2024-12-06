@@ -368,3 +368,4 @@ Migrations
 TigerTix.db*
 
 wwwroot/upload/*
+app

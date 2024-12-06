@@ -36,4 +36,4 @@ app.UseSwaggerUI(c => c.SwaggerEndpoint(
     "TigerTix-Project/apis/checkout.yaml", "v1"
     ));
 
-app.Run();
+app.Run("http://0.0.0.0:5000");
