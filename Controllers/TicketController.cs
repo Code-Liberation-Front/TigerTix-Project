@@ -27,7 +27,9 @@ namespace TigerTix.Web.Controllers
             //if(size < 5 * 1024 * 1024)
                 //return "Maximum file size is 5MB";
             string fileName = Guid.NewGuid().ToString() + extension;
-            string path = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\upload\");
+            char separator = Path.DirectorySeparatorChar;
+            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot{separator}upload{separator}"));
+            string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot{separator}upload{separator}");
             using FileStream stream = new FileStream(path + fileName, FileMode.Create);
             ticket.TicketImage.CopyTo(stream);
 
