@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TigerTix.Web.Models;
+using BC = BCrypt.Net.BCrypt;
 
 namespace TigerTix.Web.Controllers
 {
@@ -18,9 +19,9 @@ namespace TigerTix.Web.Controllers
         }
         // Redirects user to Index after login using the login model
 		[HttpPost]
-        public IActionResult Login(LoginModel model)
+        public IActionResult Login(LoginDBModel dbModel)
         {
-            if (model.Username == "testing" && model.UserPassword == "Beans123") {
+            if (dbModel.Username == "testing" && dbModel.UserPassword == "Beans123") {
                 return RedirectToAction("BuyTickets");
             }
             return View();
@@ -53,13 +54,15 @@ namespace TigerTix.Web.Controllers
         }
         // Handles User creation by taking input from user and adding to the db
         [HttpPost]
-        public IActionResult CreateUser(LoginModel model)
+        public IActionResult CreateUser(LoginDBModel dbModel)
         {
-            model.UserJoinDate = DateTime.UtcNow.Date;
-            if (!ModelState.IsValid) return View(model);
+            dbModel.UserJoinDate = DateTime.UtcNow.Date;
+            dbModel.UserIsAdmin = false;
+            if (!ModelState.IsValid) return View(dbModel);
+            dbModel.UserPassword = BC.HashPassword(dbModel.UserPassword);
             using (var db = new DbModel())
             {
-                db.Add(model);
+                db.Add(dbModel);
                 db.SaveChanges();
             }
             return RedirectToAction("Login");

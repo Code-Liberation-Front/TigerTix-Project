@@ -33,14 +33,14 @@ namespace TigerTix.Web.Controllers
             using FileStream stream = new FileStream(path + fileName, FileMode.Create);
             ticket.TicketImage.CopyTo(stream);
 
-            TicketModel newTicket = new TicketModel();
-            newTicket.TicketTitle = ticket.TicketTitle;
-            newTicket.TicketDate = ticket.TicketDate;
-            newTicket.TicketLocation = ticket.TicketLocation;
-            newTicket.TicketPath = $"/upload/{fileName}";
+            TicketDBModel newTicketDb = new TicketDBModel();
+            newTicketDb.TicketTitle = ticket.TicketTitle;
+            newTicketDb.TicketDate = ticket.TicketDate;
+            newTicketDb.TicketLocation = ticket.TicketLocation;
+            newTicketDb.TicketPath = $"/upload/{fileName}";
             using (var db = new DbModel())
             {
-                db.Add(newTicket);
+                db.Add(newTicketDb);
                 db.SaveChanges();
             }
             

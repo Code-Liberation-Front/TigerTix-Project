@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TigerTix.Web.Models
 {
 	// Define a class with user attributes
-	public class LoginModel
+	public class LoginDBModel
 	{
 		// Set user id in the db
 		[Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -32,5 +32,7 @@ namespace TigerTix.Web.Models
 		public DateTime UserDOB { get; set; }
 		// Set the join date
 		public DateTime UserJoinDate{ get; set; }
+		// Set whether the User is an Admin
+		public bool UserIsAdmin { get; set; }
 	}
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TigerTix.Web.Models
 {
     // Define a class with user attributes
-    public class TicketModel
+    public class TicketDBModel
     {
 	    // Set Ticket id in the db
 	    [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
