@@ -21,8 +21,11 @@ namespace TigerTix.Web.Controllers
 		[HttpPost]
         public IActionResult Login(LoginDBModel dbModel)
         {
-            if (dbModel.Username == "testing" && dbModel.UserPassword == "Beans123") {
-                return RedirectToAction("BuyTickets");
+            using (var db = new DbModel())
+            {
+                var verify = db.Users.SingleOrDefault(model => model.Username == dbModel.Username);
+                if (verify == null) return View();
+                if (BC.Verify(dbModel.UserPassword, verify.UserPassword)) return RedirectToAction("BuyTickets");
             }
             return View();
         }

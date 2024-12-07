@@ -13,11 +13,11 @@
     <h2>Login</h2>
     
     <label>Username:</label>
-    <input type="text" name="username"/>
+    @Html.EditorFor(model => model.Username)
     <br /><br />
     
     <label>Password:</label>
-    <input type="password" name="password"/>
+    @Html.EditorFor(model => model.UserPassword, new {htmlAttributes = new {type = "password"}})
     <br /><br />
     
     <button>Login</button>
