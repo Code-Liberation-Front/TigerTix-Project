@@ -14,10 +14,12 @@
     
     <label>Username:</label>
     @Html.EditorFor(model => model.Username)
+    @Html.ValidationMessageFor(model => model.Username, "", new {@class = "text-danger create"})
     <br /><br />
     
     <label>Password:</label>
     @Html.EditorFor(model => model.UserPassword, new {htmlAttributes = new {type = "password"}})
+    @Html.ValidationMessageFor(model => model.UserPassword, "", new {@class = "text-danger create"})
     <br /><br />
     
     <button>Login</button>

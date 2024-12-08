@@ -21,12 +21,18 @@ namespace TigerTix.Web.Controllers
 		[HttpPost]
         public IActionResult Login(LoginDBModel dbModel)
         {
-            using (var db = new DbModel())
-            {
-                var verify = db.Users.SingleOrDefault(model => model.Username == dbModel.Username);
-                if (verify == null) return View();
-                if (BC.Verify(dbModel.UserPassword, verify.UserPassword)) return RedirectToAction("BuyTickets");
+            if (string.IsNullOrEmpty(dbModel.UserPassword) || string.IsNullOrEmpty(dbModel.Username)) return View(dbModel);
+            using var db = new DbModel();
+            var verify = db.Users.SingleOrDefault(model => model.Username == dbModel.Username);
+            if (verify == null) {
+                ModelState.AddModelError("Username", "Username does not exist");
+                return View();
             }
+
+            if (BC.Verify(dbModel.UserPassword, verify.UserPassword)) {
+                return RedirectToAction("BuyTickets");
+            }
+            ModelState.AddModelError("Username", "Incorrect username or password");
             return View();
         }
         // Returns the BuyTickets view
